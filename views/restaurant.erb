@@ -1,0 +1,16 @@
+<div class="container" style="text-align:center;">
+  <h1><%=@restaurant.name%></h1>
+  <div class="container">
+      <p><%=@restaurant.location%></p>
+      <p><%=@restaurant.phone%></p>
+      <p>Views: <%=@restaurant.views%></p>
+  </div>
+</div>
+
+<div class="container" style="text-align:left;">
+  <form class="" action="/menu/<%=@restaurant.id%>" method="">
+    <div class="container">
+      <button type="submit" class="btn btn-default" name="button">Add Menu</button>
+    </div>
+  </form>
+</div>
