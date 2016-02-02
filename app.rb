@@ -20,7 +20,15 @@ end
 get '/restaurant/:id' do
   @restaurant = Restaurant.find(params[:id])
   @restaurant.update( {views: @restaurant.views + 1})
+  @menu_items = @restaurant.dishes
+
   erb :restaurant
+end
+
+get '/search' do
+  found = Restaurant.where( "name LIKE", "%#{params.fetch('search_field')}%" )
+
+  binding.pry
 end
 
 get '/menu/:id' do
@@ -48,6 +56,7 @@ post '/menu/:id' do
   end
   redirect '/restaurant/' + @restaurant.id.to_s
 end
+
 
 #Yelp.configure
 #@result = Yelp.client.search('Portland', {term: 'burger', category: 'restaurant'})

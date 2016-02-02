@@ -7,10 +7,33 @@
   </div>
 </div>
 
-<div class="container" style="text-align:left;">
-  <form class="" action="/menu/<%=@restaurant.id%>" method="">
+<div class="container" style="text-align:center;">
+  <div class="container">
+    <p>
+      -----
+    </p>
+    <h1>Potiential Allergies</h1>
+    <h3>GO HERE</h3>
+    <p>
+      -----
+    </p>
+  </div>
+
+  <div class="container">
+    <h3>Current Menu</h3>
     <div class="container">
-      <button type="submit" class="btn btn-default" name="button">Add Menu</button>
+      <% @menu_items.each do |dish|%>
+        <h3><%=dish.name%></h3>
+        <p><%= dish.ingredients %></p>
+      <%end%>
     </div>
-  </form>
+  </div>
+
+  <div class="container">
+    <form class="" action="/menu/<%=@restaurant.id%>" method="">
+      <div class="container">
+        <button type="submit" class="btn btn-default" name="button">Add To Menu</button>
+      </div>
+    </form>
+  </div>
 </div>

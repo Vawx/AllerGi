@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(version: 20160202183153) do
     t.integer "restaurant_id"
   end
 
+  create_table "keyword", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "keywords", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
