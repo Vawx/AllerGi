@@ -11,6 +11,7 @@ require './lib/dish'
 require './lib/restaurant'
 require './lib/menuresult'
 require './lib/locuresult'
+require './lib/capitalize'
 also_reload('./**/*.rb')
 
 get '/' do
@@ -26,9 +27,12 @@ get '/restaurant/:id' do
 end
 
 get '/search' do
-  found = Restaurant.where( "name LIKE", "%#{params.fetch('search_field')}%" )
-
-  binding.pry
+  search = params.fetch('search_field').to_s
+  result = Restaurant.where( 'name LIKE ?', "%" + search.cap_all + "%").all
+  if result.length > 0
+    @found = result
+  end
+  erb :index
 end
 
 get '/menu/:id' do

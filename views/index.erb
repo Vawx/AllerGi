@@ -59,4 +59,19 @@
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <% if @found != nil %>
+      <ul>
+        <% @found.each do |f| %>
+          <li>
+            <h3> <a href="/restaurant/<%=f.id%>"><%= f.name %></h3></a>
+            <p><%= f.location %></p>
+            <p><%= f.phone %></p>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
 </div>
