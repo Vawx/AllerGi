@@ -12,6 +12,7 @@ require './lib/restaurant'
 require './lib/menuresult'
 require './lib/locuresult'
 require './lib/capitalize'
+require './lib/downcasearray'
 also_reload('./**/*.rb')
 
 get '/' do
@@ -32,6 +33,31 @@ get '/search' do
   if result.length > 0
     @found = result
   end
+  erb :index
+end
+
+get '/search/:id' do
+  dish_list = Dish.all
+  clear = []
+  dish_list.each do |dish|
+    found = false
+    dish.ingredients.down_all.split(",").each do |i|
+      if params[:id].downcase.include?(i.downcase)
+        found = true
+      end
+    end
+    if !found
+      clear.push( dish )
+    end
+  end
+  result = []
+  clear.each do |c|
+    c = c.restaurants
+    c.each do |n|
+      result.push(n)
+    end
+  end
+  @found = result
   erb :index
 end
 

@@ -9,4 +9,13 @@ class String
     end
     return capped
   end
+  define_method :down_all do
+    plit = self.split(" ")
+    down = ""
+    split.each do |word|
+      word.downcase!
+      down += word
+    end
+    return down
+  end
 end
