@@ -1,5 +1,7 @@
 class Restaurant < ActiveRecord::Base
   has_and_belongs_to_many :dishes
+  validates_uniqueness_of :location
+  validates :name, presence: true
 
   define_method :equals do |match|
     return match.name == self.name && match.location == self.location && match.phone == self.phone && match.views == self.views

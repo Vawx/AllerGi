@@ -1,4 +1,5 @@
 require './lib/restaurant'
+require './lib/dish'
 require 'pry'
 
 restaurant_list =[
@@ -43,7 +44,6 @@ restaurant_list =[
 ["Swift and Union, +1-503-206-4281, 8103 N Denver, 0"],
 ["Canyon Grill, +1-503-292-5131, 8825 SW Canyon Rd, 0"]
 ]
-
 
 restaurant_list.each do |r|
   split = r[0].split( "," )

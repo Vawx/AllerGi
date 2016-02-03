@@ -54,19 +54,11 @@ get '/search/:id' do
   clear.each do |c|
     c = c.restaurants
     c.each do |n|
-      found = false
-      result.each do |r|
-        if n.equals(r)
-          found = true
-        end
-      end
-      if !found
-        result.push(n)
-      end
-      found = false
+      result.push(n)
     end
   end
   @found = result
+  binding.pry
   erb :index
 end
 
